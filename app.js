@@ -103,7 +103,7 @@ function random(array) {
 }
 
 function esLetra (letra) {
-    let reg = /[A-Za-z]/;
+    let reg = /[A-Za-zÑñ]/;
 
     return reg.test(letra);
 }
