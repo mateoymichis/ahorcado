@@ -1,4 +1,4 @@
-let palabrasPosibles = ["ahorcado", "pizza", "camaron", "carniceria", "clasificacion", "ambiguedad", "transito", "caramelera", "anestesia", "programacion"];
+let palabrasPosibles = ["ahorcado", "pizza", "camaron", "carniceria", "clasificacion", "ambiguedad", "transito", "caramelera", "anestesia", "programacion", "calefactor", "alicate", "pasteleria", "magnifico", "establecimiento", "infusion", "influencia", "marisco", "vertebrado", "acuatico", "heladera", "cartilago", "esperanza", "infierno", "television", "lenguaje", "imposible", "hortaliza", "sudoku", "esfuerzo", "autopista", "fotografia", "resplandor", "cartera", "montaña", "pelicula", "martillo", "bosquejo", "iguana", "competencia", "lasagna", "helado", "conducir", "electrico", "hospital", "zurdo"];
 
 let palabra = "";
 
@@ -23,6 +23,7 @@ btnEnviar.addEventListener("click", (event)=> {
     ahorcado.setAttribute("src", imagen(intentosDisponibles));
     letra.value = "";
     verificar();
+    letra.focus();
 });
 
 btnReiniciar.addEventListener("click", comenzarJuego);
@@ -38,6 +39,7 @@ function comenzarJuego() {
     mensaje.innerHTML = "";
     historial.innerHTML = "";
     ahorcado.setAttribute("src", imagen(intentosDisponibles));
+    letra.focus();
 }
 
 function intentar(letra) {
