@@ -59,7 +59,7 @@ function intentar(letra) {
     }
 
     for (let i = 0; i < palabra.length; i++) {
-        if (letra === palabra[i]) {
+        if (letra.toUpperCase() === palabra[i].toUpperCase()) {
             string[i] = letra;
             letrasEncontradas++;
         }
