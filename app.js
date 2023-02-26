@@ -6,24 +6,35 @@ let palabraAdivinada = "";
 
 let intentosDisponibles = 0;
 
+let letraClickeada = "";
+
+const letra = document.getElementById("letra");
 const divPalabra = document.getElementById("palabra");
 const btnEnviar = document.getElementById("enviar");
-const letra = document.getElementById("letra");
 const historial = document.getElementById("historial");
 const mensaje = document.getElementById("mensaje");
 const ahorcado = document.getElementById("ahorcado");
 const btnReiniciar = document.getElementById("reiniciar");
-const form = document.getElementById("form");
 
-btnEnviar.addEventListener("click", (event)=> {
-    event.preventDefault();
-    let letraElegida = letra.value;
+const btnLetra = document.getElementsByClassName("keyboard-button");
+    
+
+    for (let i=0; i< btnLetra.length; i++) {
+        btnLetra[i].addEventListener("click", (e) => {
+            console.log(e.target.innerHTML); 
+            letraClickeada = e.target.innerHTML;
+            letra.innerHTML = letraClickeada.toUpperCase();
+        });
+    }
+
+
+
+btnEnviar.addEventListener("click", ()=> {
+    let letraElegida = letraClickeada;
     console.log(intentar(letraElegida));
     divPalabra.innerHTML = palabraAdivinada;
     ahorcado.setAttribute("src", imagen(intentosDisponibles));
-    letra.value = "";
     verificar();
-    letra.focus();
 });
 
 btnReiniciar.addEventListener("click", comenzarJuego);
@@ -35,23 +46,15 @@ function comenzarJuego() {
     divPalabra.innerHTML = palabraAdivinada;
     intentosDisponibles = 6;
     btnReiniciar.classList.add("oculto");
-    form.classList.remove("oculto");
     mensaje.innerHTML = "";
     historial.innerHTML = "";
     ahorcado.setAttribute("src", imagen(intentosDisponibles));
-    letra.focus();
 }
 
 function intentar(letra) {
     mensaje.innerHTML = "";
     let letrasEncontradas = 0;
     let string = Array.from(palabraAdivinada);
-
-    if (!esLetra(letra)) {
-        mensaje.innerHTML = "🚫 Solo se permiten letras"
-        return
-    }
-    
 
     if (historial.innerHTML.includes(letra.toUpperCase()) || palabraAdivinada.includes(letra.toUpperCase())) {
         mensaje.innerHTML = "⛔ Esa letra ya fue utilizada"
@@ -75,13 +78,13 @@ function intentar(letra) {
 
 function verificar() {
     if (palabraAdivinada.toUpperCase() === palabra.toUpperCase()) {
+        letra.innerHTML = "";
         mensaje.innerHTML = "😄 ¡Felicitaciones! ¡Ganaste!";
         btnReiniciar.classList.remove("oculto");
-        form.classList.add("oculto");
     } else if (intentosDisponibles === 0) {
+        letra.innerHTML = "";
         mensaje.innerHTML = `😢 ¡Perdiste! La palabra era "${palabra.toUpperCase()}".`;
         btnReiniciar.classList.remove("oculto");
-        form.classList.add("oculto");
     }
 }
 
@@ -102,9 +105,4 @@ function random(array) {
     return array[indice];
 }
 
-function esLetra (letra) {
-    let reg = /[A-Za-zÑñ]/;
-
-    return reg.test(letra);
-}
 comenzarJuego();
