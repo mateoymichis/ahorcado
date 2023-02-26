@@ -1,0 +1,75 @@
+#ahorcado {
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem;
+}
+
+#palabra {
+    font-size: 3rem;
+    margin: 0.5rem;
+    color: rgb(34, 96, 211);
+    letter-spacing: 0.7rem;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgb(220, 227, 228);
+}
+
+#historial {
+    font-size: 2rem;
+    color: crimson;
+}
+
+.text {
+    font-size: 2rem;
+    color: crimson;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.input {
+    font-size: 1.2rem;
+    width: 50px;
+    height: 50.4px;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.oculto {
+    display: none;
+}
+
+#mensaje {
+    text-align: center;
+}
+
+@media screen and (max-width: 420px) {
+    #palabra {
+        font-size: 2rem;
+        word-wrap: break-word;
+    }
+
+    #ahorcado {
+        width: 220px;
+    }
+
+    .text {
+        font-size: 1.3rem;
+    }
+}
+  
